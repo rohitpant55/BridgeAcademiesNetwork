@@ -32,6 +32,7 @@ TeacherComputerRetrieval.sln
 ## Project structure
 * TeacherComputerRetrievalLibrary is a library comprising of the various route operations business logic.
 * TeacherComputerRetrievalClient consumes the TeacherComputerRetrievalLibrary to call the route operations with given inputs.
+* TeacherComputreRetrievalLibraryTests contains the test cases for the TeacherComputerRetrievalLibrary project.
 
 ## Tests
 
@@ -41,7 +42,11 @@ Right click on TeacherComputreRetrievalLibraryTests and click on Run Tests
 You will be able to see the tests status on the Test Explorer.
 
 ## Example
+### TeacherComputerRetrievalClient project in the solution is used to create a real world example with connected cities and different operations are perfromed on the network
+![Academies Network Sample](Images/NetworkWithRealisticCitiesAndOperations.png)
 
+### Successful execution of test cases
+![Test Explore Screenshot](Images/TestCasesTestExplorer.png)
 
 ## References
 
