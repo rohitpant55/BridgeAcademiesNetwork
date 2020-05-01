@@ -1,5 +1,5 @@
 # Teacher Computer Retrieval Application
-This application helps in getting route details between academies to aid the teacher computer retrieval by the IT team. 
+This application helps in getting route details between academies to aid the teacher computer retrieval by the IT team. Application uses concepts and algorithms including Generics, Recursion, DFS (depth first search), TSP with adjacency list etc. to complete the features mentioned below.
 
 ## Features
 
@@ -52,6 +52,7 @@ You will be able to see the tests status on the Test Explorer.
 
 * https://www.c-sharpcorner.com/article/mstest-v2-how-it-differs/
 * https://en.wikipedia.org/wiki/Travelling_salesman_problem
+* https://iq.opengenus.org/graph-representation-adjacency-matrix-adjacency-list/
 
 
 
