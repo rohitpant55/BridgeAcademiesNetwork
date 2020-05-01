@@ -137,8 +137,8 @@
         [DataRow('B', 'M', int.MaxValue)]
         public async Task InvalidCitiesShortestPathTestAsync(char start, char end, int expectedResult)
         {
-            var (_, total) = await routeOperations.ShortestRouteBetweenAcademiesAsync(start, end, network);
-            Assert.AreEqual(total, expectedResult);
+            var result = await routeOperations.ShortestRouteBetweenAcademiesAsync(start, end, network);
+            Assert.AreEqual(result?.total, expectedResult);
         }
 
         /// <summary>
@@ -154,6 +154,37 @@
         {
             var result = await routeOperations.TotalRoutesBetweenAcademiesWithDistanceRangeAsync(start, end, distanceRange, network);
             Assert.AreEqual(result, expectedResult);
+        }
+
+        /// <summary>
+        /// total trips with null network
+        /// </summary>
+        /// <param name="start">The start.</param>
+        /// <param name="end">The end.</param>
+        /// <param name="distanceRange">The distance range.</param>
+        /// <param name="expectedResult">The expected result.</param>
+        [TestMethod]
+        [DataRow('C', 'C', 5, null)]
+        public async Task TotalTripUnderNullNetwork(char start, char end, int distanceRange, int? expectedResult)
+        {
+            var result = await routeOperations.TotalRoutesBetweenAcademiesWithDistanceRangeAsync(start, end, distanceRange, null);
+            Assert.AreEqual(result, expectedResult);
+        }
+
+        /// <summary>
+        /// total trips with null network
+        /// </summary>
+        /// <param name="start">The start.</param>
+        /// <param name="end">The end.</param>
+        /// <param name="exactStops">if set to <c>true</c> [exact stops].</param>
+        /// <param name="stops">The stops.</param>
+        /// <param name="expectedResult">The expected result.</param>
+        [TestMethod]
+        [DataRow('A', 'C', true, 4, null)]
+        public async Task TotalTripsWithNullNetworkAndFourStopsCheckAsync(char start, char end, bool exactStops, int stops, int? expectedResult)
+        {
+            var withStopsLessThanEqual = await routeOperations.TotalRoutesBetweenAcademiesWithStopsAsync(start, end, stops, null, exactStops);
+            Assert.AreEqual(withStopsLessThanEqual, expectedResult);
         }
 
         /// <summary>
@@ -183,6 +214,19 @@
         }
 
         /// <summary>
+        /// Routes to check with null netowrk of cities.
+        /// </summary>
+        /// <param name="route">The route.</param>
+        /// <param name="expectedResult">The expected result.</param>
+        [TestMethod]
+        [DataRow(new char[] { 'B', 'B' }, null)]
+        public async Task RouteCheckWithNullNetworkAsync(char[] route, string expectedResult)
+        {
+            var result = await routeOperations.TotalDistanceAlongRouteAsync(route.ToList(), null);
+            Assert.AreEqual(result, expectedResult);
+        }
+
+        /// <summary>
         /// Shortests the path between two cities asynchronous.
         /// </summary>
         /// <param name="start">The start.</param>
@@ -192,8 +236,8 @@
         [DynamicData(nameof(GetShortestPathData), DynamicDataSourceType.Method)]
         public async Task ShortestPathBetweenTwoCitiesAsync(char start, char end, int expectedResult)
         {
-            var (_, total) = await routeOperations.ShortestRouteBetweenAcademiesAsync(start, end, network);
-            Assert.AreEqual(total, expectedResult);
+            var result = await routeOperations.ShortestRouteBetweenAcademiesAsync(start, end, network);
+            Assert.AreEqual(result?.total, expectedResult);
         }
 
         /// <summary>

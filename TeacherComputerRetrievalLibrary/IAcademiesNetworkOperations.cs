@@ -62,6 +62,6 @@
         /// <returns>
         /// shortest path
         /// </returns>
-        Task<(List<T> path, int total)> ShortestRouteBetweenAcademiesAsync(T start, T end, AcademiesNetwork<T> network);
+        Task<(List<T> path, int total)?> ShortestRouteBetweenAcademiesAsync(T start, T end, AcademiesNetwork<T> network);
     }
 }

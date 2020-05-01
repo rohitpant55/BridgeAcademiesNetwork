@@ -39,8 +39,13 @@
         /// <returns>
         /// shortest path
         /// </returns>
-        public async Task<(List<T> path, int total)> ShortestRouteBetweenAcademiesAsync(T start, T end, AcademiesNetwork<T> network)
+        public async Task<(List<T> path, int total)?> ShortestRouteBetweenAcademiesAsync(T start, T end, AcademiesNetwork<T> network)
         {
+            if (network == null || network.academies.Count < 1)
+            {
+                return null;
+            }
+
             var path = (new List<T>
             {
                 start
@@ -65,6 +70,11 @@
         /// </returns>
         public async Task<string> TotalDistanceAlongRouteAsync(List<T> locations, AcademiesNetwork<T> network)
         {
+            if (network == null || network.academies.Count < 1)
+            {
+                return null;
+            }
+
             return await GetRouteDistanceAsync(locations, network.academies);
         }
 
@@ -80,7 +90,7 @@
         /// </returns>
         public async Task<List<(List<T> path, int total)>> TotalRoutesBetweenAcademiesWithDistanceRangeAsync(T start, T end, int range, AcademiesNetwork<T> network)
         {
-            if (range <= 0)
+            if (network == null || network.academies.Count < 1 || range <= 0)
             {
                 return null;
             }
@@ -105,7 +115,7 @@
         /// <returns>list of routes and their total distance with cities less than mentioned stops</returns>
         public async Task<List<(List<T> path, int total)>> TotalRoutesBetweenAcademiesWithStopsAsync(T start, T end, int stops, AcademiesNetwork<T> network, bool matchExact = false)
         {
-            if (stops <= 0)
+            if (network == null || network.academies.Count < 1 || stops <= 0)
             {
                 return null;
             }

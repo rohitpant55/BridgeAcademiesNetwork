@@ -52,11 +52,11 @@
             Console.WriteLine();
             Console.WriteLine("Find shortest path between Kiserian -> Masai");
             var shortestRoute = await routeOperations.ShortestRouteBetweenAcademiesAsync("Kiserian", "Masai", network);
-            Console.WriteLine($"{string.Join("->", shortestRoute.path)} with total distance : {shortestRoute.total}");
+            Console.WriteLine($"{string.Join("->", shortestRoute?.path)} with total distance : {shortestRoute?.total}");
             Console.WriteLine();
             Console.WriteLine("Find shortest path between Rongai -> Rongai");
             shortestRoute = await routeOperations.ShortestRouteBetweenAcademiesAsync("Rongai", "Rongai", network);
-            Console.WriteLine($"{string.Join("->", shortestRoute.path)} with total distance : {shortestRoute.total}");
+            Console.WriteLine($"{string.Join("->", shortestRoute?.path)} with total distance : {shortestRoute?.total}");
 
             Console.WriteLine();
             Console.WriteLine("Total paths between Masai -> Masai with distance less than 30");
