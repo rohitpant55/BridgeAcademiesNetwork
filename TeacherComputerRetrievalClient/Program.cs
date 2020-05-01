@@ -25,11 +25,13 @@
                 ("Kajiado", "Rongai", 3)  // EB3
             });
 
-            Console.WriteLine(await routeOperations.TotalDistanceAlongRouteAsync(new List<string> { "Kiserian", "Rongai", "Masai" }, network));
-            Console.WriteLine(await routeOperations.TotalDistanceAlongRouteAsync(new List<string> { "Kiserian", "Kajiado", "Rongai", "Masai", "Karen" }, network));
-            Console.WriteLine(await routeOperations.TotalDistanceAlongRouteAsync(new List<string> { "Kiserian", "Kajiado", "Karen" }, network));
+            Console.WriteLine();
+            Console.WriteLine($"Distance from Kiserian -> Rongai -> Masai : {await routeOperations.TotalDistanceAlongRouteAsync(new List<string> { "Kiserian", "Rongai", "Masai" }, network)}");
+            Console.WriteLine($"Distance from Kiserian -> Kajiado -> Rongai -> Masai -> Karen : {await routeOperations.TotalDistanceAlongRouteAsync(new List<string> { "Kiserian", "Kajiado", "Rongai", "Masai", "Karen" }, network)}");
+            Console.WriteLine($"Distance from Kiserian -> Kajiado -> Karen : {await routeOperations.TotalDistanceAlongRouteAsync(new List<string> { "Kiserian", "Kajiado", "Karen" }, network)}");
 
             Console.WriteLine();
+            Console.WriteLine("Find all paths between Masai -> Masai with Maximum of 3 stops");
             var withStopsLessThanEqual  = await routeOperations.TotalRoutesBetweenAcademiesWithStopsAsync("Masai", "Masai", 3, network);
             Console.WriteLine($"Total number of routes - {withStopsLessThanEqual.Count}");
             foreach (var (path, total) in withStopsLessThanEqual)
@@ -38,6 +40,7 @@
             }
 
             Console.WriteLine();
+            Console.WriteLine("Find all paths between Kiserian -> Masai with 4 stops exactly");
             var withExactStops = await routeOperations.TotalRoutesBetweenAcademiesWithStopsAsync("Kiserian", "Masai", 4, network, true);
             Console.WriteLine($"Total number of routes - {withExactStops.Count}");
 
@@ -47,14 +50,16 @@
             }
 
             Console.WriteLine();
-
+            Console.WriteLine("Find shortest path between Kiserian -> Masai");
             var shortestRoute = await routeOperations.ShortestRouteBetweenAcademiesAsync("Kiserian", "Masai", network);
             Console.WriteLine($"{string.Join("->", shortestRoute.path)} with total distance : {shortestRoute.total}");
+            Console.WriteLine();
+            Console.WriteLine("Find shortest path between Rongai -> Rongai");
             shortestRoute = await routeOperations.ShortestRouteBetweenAcademiesAsync("Rongai", "Rongai", network);
             Console.WriteLine($"{string.Join("->", shortestRoute.path)} with total distance : {shortestRoute.total}");
 
             Console.WriteLine();
-
+            Console.WriteLine("Total paths between Masai -> Masai with distance less than 30");
             var routeWithRange = await routeOperations.TotalRoutesBetweenAcademiesWithDistanceRangeAsync("Masai", "Masai", 30, network);
             Console.WriteLine($"Total number of routes - {routeWithRange.Count}");
             foreach (var (path, total) in routeWithRange)

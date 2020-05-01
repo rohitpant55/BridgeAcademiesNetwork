@@ -9,6 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeacherComputerRetrievalLib
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeacherComputerRetrievalLibraryTests", "TeacherComputerRetrievalLibraryTests\TeacherComputerRetrievalLibraryTests.csproj", "{65F3E094-BA1D-416F-967C-CD2F1B405583}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{D8FD1799-6599-43F4-8A7D-F558784748BF}"
+	ProjectSection(SolutionItems) = preProject
+		Images\NetworkWithRealisticCitiesAndOperations.png = Images\NetworkWithRealisticCitiesAndOperations.png
+		Images\TestCasesTestExplorer.png = Images\TestCasesTestExplorer.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
